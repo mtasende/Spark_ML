@@ -1,0 +1,36 @@
+How to setup a Spark cluster in AWS
+
+Go to: https://console.aws.amazon.com/elasticmapreduce/
+
+"Create Cluster"
+
+Release: emr-5.20.0 or later
+Applications: Spark: Spark 2.4.0 on Hadoop 2.8.5 YARN with Ganglia 3.7.2 and Zeppelin 0.8.0
+Instance type: m3.xlarge (I will use m5.xlarge - 2019)
+Number of instance: 3
+EC2 key pair: Proceed without an EC2 key pair (or use one if you want)
+
+Wait for cluster "Waiting" status.
+
+Create a Notebook: "Notebooks" -> "Create notebook"
+
+Configure the notebook:
+    Enter a name for the notebook
+    Select "Choose an existing cluster" and choose the cluster you just created
+    Use the default setting for "AWS service role" - this should be "EMR_Notebooks_DefaultRole" or "Create default role" if you haven't done this before.
+
+
+Wait for notebook "Ready" status, then open.
+
+Start coding!
+
+
+EMR Pricing:  https://aws.amazon.com/emr/pricing/
+
+Amazon EMR on EC2 Spot Instances (!)
+
+ - The cluster can be terminated, and the notebook will remain unchanged.
+ - When finishing the entire project: Terminate the cluster, Delete the notebook, Delete the generated S3 buckets
+ - Just in case, look at "My Billing Dashboard"
+
+
